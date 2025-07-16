@@ -1,0 +1,15 @@
+---
+import mockAsesorias from '../data/mock-asesorias.json';
+import CardAsesoria from '../components/react/CardAsesoria.jsx';
+---
+<html lang="es">
+  <head>
+    <title>Inicio | Red de Asesorías</title>
+  </head>
+  <body class="p-6">
+    <h1 class="text-3xl font-bold mb-4">Últimas Asesorías</h1>
+    {mockAsesorias.map(asesoria => (
+      <CardAsesoria asesoria={asesoria} />
+    ))}
+  </body>
+</html>
