@@ -1,0 +1,48 @@
+---
+import MainLayout from "../layouts/AuthLayout.astro";
+
+
+const cursos = [
+  { id: '1', titulo: 'Curso de React', descripcion: 'Aprende React desde cero.' },
+  { id: '2', titulo: 'Curso de Astro', descripcion: 'Crea sitios ultrarrápidos con Astro.' },
+  { id: '3', titulo: 'Curso de JavaScript Moderno', descripcion: 'Domina ES6+ y las nuevas características de JavaScript.' },
+  { id: '4', titulo: 'Curso de TypeScript', descripcion: 'JavaScript tipado para proyectos más robustos.' },
+  { id: '5', titulo: 'Curso de Node.js', descripcion: 'Backend con JavaScript usando Node.js.' },
+  { id: '6', titulo: 'Curso de Express', descripcion: 'Crea APIs RESTful con el framework Express.' },
+  { id: '7', titulo: 'Curso de MongoDB', descripcion: 'Base de datos NoSQL para aplicaciones modernas.' },
+  { id: '8', titulo: 'Curso de GraphQL', descripcion: 'Alternativa moderna a REST para APIs.' },
+  { id: '9', titulo: 'Curso de Vue.js', descripcion: 'Framework progresivo de JavaScript.' },
+  { id: '10', titulo: 'Curso de Svelte', descripcion: 'El framework que compila a JavaScript puro.' },
+  { id: '11', titulo: 'Curso de Tailwind CSS', descripcion: 'Diseño rápido con clases utilitarias.' },
+  { id: '12', titulo: 'Curso de Next.js', descripcion: 'React framework para producción.' },
+  { id: '13', titulo: 'Curso de Docker', descripcion: 'Contenedores para desarrollo y despliegue.' },
+  { id: '14', titulo: 'Curso de Git y GitHub', descripcion: 'Control de versiones y trabajo colaborativo.' }
+];
+
+export async function getStaticPaths() {
+  return cursos.map(curso => ({
+    params: { id: curso.id }
+  }));
+}
+---
+
+<MainLayout title="Cursos Disponibles">
+  <section class="px-4 py-10 max-w-6xl mx-auto text-gray-800">
+    <h1 class="text-4xl font-bold text-gray-800 mb-6 border-b pb-2">📚 Cursos Disponibles</h1>
+
+    <div class="grid sm:grid-cols-2 gap-6">
+      {cursos.map((curso) => (
+        <a
+          href={`/cursos/${curso.id}`}
+          class="block p-6 bg-white rounded-lg shadow hover:shadow-lg transition hover:-translate-y-1 border border-gray-200"
+        >
+          <h2 class="text-xl font-semibold text-blue-700 mb-2">{curso.titulo}</h2>
+          <p class="text-gray-600">{curso.descripcion}</p>
+          <div class="mt-4 text-blue-500 font-medium flex items-center gap-1">
+            Ver más <i class="fas fa-arrow-right"></i>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</MainLayout>

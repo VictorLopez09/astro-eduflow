@@ -1,0 +1,36 @@
+---
+import Navbar from '../../components/ui/Navbar.astro';
+import "../../styles/global.css";
+const { title } = Astro.props;
+const { url } = Astro.request;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title ?? 'Mi app educativa'}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body class="min-h-screen flex flex-col bg-gray-100 text-gray-800">
+    <!-- HEADER CON CONTAINER -->
+    <header class="bg-blue-600 text-white shadow">
+      <div class="px-4 py-5 max-w-6xl mx-auto"> <!-- Contenedor centrado con padding -->
+        <h1 class="text-xl font-bold py-2">🌐 Mi Red de Cursos</h1>
+        <Navbar currentPath={url} />
+      </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL (se expande para empujar el footer abajo) -->
+    <main class="flex-grow container mx-auto p-4"> <!-- Contenedor para el main -->
+      <slot />
+    </main>
+
+    <!-- FOOTER (siempre abajo) -->
+    <footer class="bg-gray-200 text-center py-4">
+      <div class="container mx-auto"> <!-- Contenedor para el footer -->
+        © {new Date().getFullYear()} Mi Red Educativa. Todos los derechos reservados.
+      </div>
+    </footer>
+  </body>
+</html>

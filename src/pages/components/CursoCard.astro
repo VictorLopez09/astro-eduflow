@@ -1,0 +1,11 @@
+---
+// src/components/CursoCard.astro
+const { curso } = Astro.props;
+---
+<div class="bg-white border shadow-sm rounded-lg p-4 hover:shadow-md transition">
+  <h3 class="text-xl font-semibold text-blue-700">{curso.titulo}</h3>
+  <p class="text-gray-600">{curso.descripcion}</p>
+  <a href={`/cursos/${curso.id}`} class="mt-2 inline-block text-blue-600 hover:underline text-sm">
+    Ver detalles →
+  </a>
+</div>

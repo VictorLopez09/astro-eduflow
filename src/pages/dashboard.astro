@@ -1,0 +1,49 @@
+---
+import MainLayout from "./layouts/AuthLayout.astro";
+import CursoCard from "./components/CursoCard.astro";
+import { cursos } from "../data/cursos.js";
+
+const cursosInscritos = [cursos[0], cursos[2]]; // Simulados
+const cursosLimitados = cursos.slice(0, 6); // Solo los primeros 6
+---
+<MainLayout title="Dashboard">
+  <section class="px-4 py-10 max-w-6xl mx-auto space-y-16">
+    <!-- CURSOS INSCRITOS -->
+    <div>
+      <h2 class="text-3xl font-bold text-green-700 mb-6 flex items-center gap-2">
+        🎓 <span>Mis Cursos Inscritos</span>
+      </h2>
+      {
+        cursosInscritos.length > 0 ? (
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {cursosInscritos.map((curso) => (
+              <CursoCard curso={curso} />
+            ))}
+          </div>
+        ) : (
+          <p class="text-gray-500 italic">
+            Aún no estás inscrito en ningún curso.
+          </p>
+        )
+      }
+    </div>
+
+    <hr class="border-gray-300" />
+
+    <!-- CURSOS DISPONIBLES -->
+    <div>
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-3xl font-bold text-blue-800 flex items-center gap-2">
+          📚 <span>Cursos Disponibles</span>
+        </h2>
+        <a href="/cursos" class="text-sm text-blue-600 hover:underline">
+          Ver todos &rarr;
+        </a>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {cursosLimitados.map((curso) => <CursoCard curso={curso} />)}
+      </div>
+    </div>
+  </section>
+</MainLayout>
+

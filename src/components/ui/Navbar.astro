@@ -1,0 +1,20 @@
+---
+// Navbar.astro
+const { currentPath } = Astro.props;
+
+const links = [
+  { path: '/', text: 'Inicio', show: currentPath !== '/' },
+  { path: '/register', text: 'Registro', show: currentPath !== '/register' },
+  { path: '/about', text: 'Sobre Nosotros', show: currentPath !== '/about' },
+  { path: '/contacto', text: 'Contacto', show: currentPath !== '/contacto' },
+  
+];
+---
+
+<nav class="bg-blue-600 text-white p-4 flex justify-between">
+  <div class="space-x-4">
+    {links.map(link => link.show && (
+      <a href={link.path} class="hover:underline">{link.text}</a>
+    ))}
+  </div>
+</nav>

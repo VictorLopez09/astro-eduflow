@@ -1,0 +1,60 @@
+---
+import MainLayout from "./layouts/AuthLayout.astro";
+
+const user = {
+  nombre: "Juan Pérez",
+  email: "juan.perez@example.com",
+  avatar: "https://i.pravatar.cc/100?img=3",
+};
+---
+
+<MainLayout title="Configuración de Usuario">
+  <section class="px-4 py-10 max-w-6xl mx-auto space-y-10">
+    <!-- Encabezado -->
+    <div class="flex items-center gap-4">
+      <img src={user.avatar} alt="Avatar" class="w-16 h-16 rounded-full border-2 border-blue-500" />
+      <div>
+        <h2 class="text-2xl font-bold text-gray-800">{user.nombre}</h2>
+        <p class="text-gray-600">{user.email}</p>
+      </div>
+    </div>
+
+    <!-- Formulario de configuración -->
+    <form class="bg-white rounded-xl shadow p-6 space-y-6">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="nombre">Nombre</label>
+        <input id="nombre" name="nombre" type="text" value={user.nombre}
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="email">Email</label>
+        <input id="email" name="email" type="email" value={user.email}
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="password">Nueva Contraseña</label>
+        <input id="password" name="password" type="password"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+      <!-- Preferencias -->
+      <div class="flex items-center gap-4">
+        <label class="flex items-center gap-2">
+          <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
+          <span>Recibir notificaciones por correo</span>
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" />
+          <span>Modo oscuro automático</span>
+        </label>
+      </div>
+
+      <button type="submit"
+        class="bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+        Guardar Cambios
+      </button>
+    </form>
+  </section>
+</MainLayout>

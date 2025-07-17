@@ -1,0 +1,34 @@
+---
+// src/pages/about.astro
+import MainLayout from './layouts/MainLayout.astro';
+---
+
+<MainLayout title="Sobre Nosotros">
+  <section class="px-4 py-10 max-w-6xl mx-auto">
+    <h1 class="text-4xl font-bold text-indigo-700 mb-6">Quiénes somos</h1>
+
+    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+      Somos una plataforma educativa apasionada por compartir conocimiento de forma accesible y moderna. 
+      Nuestro objetivo es empoderar a estudiantes, profesionales y entusiastas de la tecnología mediante cursos 
+      prácticos, actualizados y diseñados por expertos del sector.
+    </p>
+
+    <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-200 shadow-sm">
+      <h2 class="text-2xl font-semibold text-indigo-800 mb-2">Nuestra misión</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Democratizar el acceso a la educación tecnológica, creando una comunidad donde aprender sea sinónimo de disfrutar.
+      </p>
+    </div>
+
+    <div class="mt-10 grid md:grid-cols-2 gap-6">
+      <div class="bg-white border p-5 rounded-lg shadow-sm">
+        <h3 class="text-xl font-bold text-indigo-600 mb-2">+20 cursos</h3>
+        <p class="text-gray-600">En constante expansión para cubrir los temas más actuales.</p>
+      </div>
+      <div class="bg-white border p-5 rounded-lg shadow-sm">
+        <h3 class="text-xl font-bold text-indigo-600 mb-2">+1,000 estudiantes</h3>
+        <p class="text-gray-600">Con experiencias positivas y testimonios reales.</p>
+      </div>
+    </div>
+  </section>
+</MainLayout>

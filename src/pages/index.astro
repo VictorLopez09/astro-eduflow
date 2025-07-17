@@ -1,15 +1,93 @@
 ---
-import mockAsesorias from '../data/mock-asesorias.json';
-import CardAsesoria from '../components/react/CardAsesoria.jsx';
+import MainLayout from './layouts/MainLayout.astro';
 ---
-<html lang="es">
-  <head>
-    <title>Inicio | Red de Asesorías</title>
-  </head>
-  <body class="p-6">
-    <h1 class="text-3xl font-bold mb-4">Últimas Asesorías</h1>
-    {mockAsesorias.map(asesoria => (
-      <CardAsesoria asesoria={asesoria} />
-    ))}
-  </body>
-</html>
+
+<MainLayout title="Iniciar Sesión">
+  <main class="flex justify-center items-center px-4 py-10 max-w-6xl mx-auto">
+    <div class="bg-white shadow-xl rounded-lg max-w-md w-full p-8 border border-gray-200">
+      <div class="text-center mb-6">
+        <h1 class="text-2xl font-bold text-blue-700">Iniciar Sesión</h1>
+        <p class="text-gray-600 text-sm">Ingresa tus credenciales para acceder</p>
+      </div>
+
+      <form id="loginForm" class="space-y-4">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+          <div class="relative mt-1">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+              <i class="far fa-envelope"></i>
+            </span>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="correo@ejemplo.com"
+              class="mt-1 w-full px-3 py-2 border rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+          <div class="relative mt-1">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+              <i class="fas fa-lock"></i>
+            </span>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              placeholder="••••••••"
+              class="mt-1 w-full px-3 py-2 border rounded-md p-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-sm">
+          <label class="flex items-center gap-2">
+            <input type="checkbox" class="rounded text-blue-600" />
+            Recordarme
+          </label>
+          <a href="#" class="text-blue-600 hover:underline">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+        >
+          Iniciar Sesión
+        </button>
+
+        <div id="error-message" class="hidden bg-red-50 border-l-4 border-red-500 p-3 text-sm text-red-700 mt-4"></div>
+      </form>
+
+      <div class="text-center text-sm mt-6 text-gray-500">
+        ¿No tienes cuenta? <a href="/register" class="text-blue-600 hover:underline">Regístrate</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById('loginForm') as HTMLFormElement | null;
+    const errorBox = document.getElementById('error-message');
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const email = (form.elements.namedItem('email') as HTMLInputElement)?.value.trim();
+        const password = (form.elements.namedItem('password') as HTMLInputElement)?.value;
+
+        if (email === 'admin@admin.com' && password === '1234') {
+          window.location.href = '/dashboard';
+        } else {
+          if (errorBox) {
+            errorBox.classList.remove('hidden');
+            errorBox.textContent = 'Credenciales inválidas';
+          }
+        }
+      });
+    }
+  </script>
+</MainLayout>
